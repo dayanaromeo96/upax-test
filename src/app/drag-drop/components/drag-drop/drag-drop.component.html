@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="center mt-3">
+        <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+             accept=".png, jpeg, jpg)">
+            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                Arrastre las imágenes aquí.
+                <button type="button" class="btn btn-primary ms-3" (click)="openFileSelector()">Browse Files</button>
+            </ng-template>
+        </ngx-file-drop>
+        <div class="row my-4">
+           <div class="col-10 d-flex justify-content-end mb-3 offset-1" *ngIf="imgData.length" (click)="saveImg()"> <button type="button" class="btn btn-primary btn-lg ms-3" >Salvar</button></div>
+            <div class="col-10 offset-1">
+                <carousel>
+                    <slide *ngFor="let item of imgData; let i=index">
+                        <img [src]="item.img" alt="first slide" style="display: block; width: 100%;">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>{{item.name}}</h3>
+                        </div>
+                    </slide>
+                </carousel>
+
+            </div>
+        </div>
+    </div>
+</div>

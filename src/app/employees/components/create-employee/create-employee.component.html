@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Crear Usuario</h4>
+    <button type="button" class="close btn-close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="employeeForm" (ngSubmit)="createEmployee()">
+        <div class="row align-items-center">
+            <div class=" col-md-10 offset-md-1">
+                <div class="row mb-3">
+                    <div class="col-md-12 p-0 mb-3">
+                        <label>Nombre*</label>
+                        <input type="text" class="form-control form-control-sm" formControlName="name"
+                            placeholder="Ingrese el nombre" aria-label="Nombre"
+                            [ngClass]="{'is-invalid':employeeForm.controls['name'].errors && submited}">
+                        <div *ngIf=" submited && employeeForm.controls['name'].errors" class="invalid-feedback">
+                            <div *ngIf="submited && employeeForm.controls['name'].errors['required']"
+                                style="text-align: start;">El campo
+                                nombre es obligatorio</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mb-3">
+                        <label>Apellidos*</label>
+                        <input type="text" class="form-control form-control-sm" formControlName="last_name"
+                            placeholder="Ingrese sus apellidos" aria-label="Nombre"
+                            [ngClass]="{'is-invalid':employeeForm.controls['last_name'].errors && submited}">
+                        <div *ngIf=" submited && employeeForm.controls['last_name'].errors" class="invalid-feedback">
+                            <div *ngIf="submited && employeeForm.controls['last_name'].errors['required']"
+                                style="text-align: start;">El campo
+                                apellido es obligatorio</div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 form-group p-0 mb-3">
+                        <label>Fecha de nacimiento*</label>
+                        <input type="text" class="form-control" #dp="bsDatepicker"
+                            [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false, containerClass: 'theme-default' }"
+                            bsDatepicker formControlName="birthday"  [ngClass]="{'is-invalid':employeeForm.controls['birthday'].errors && submited}">
+                            <div *ngIf=" submited && employeeForm.controls['birthday'].errors" class="invalid-feedback">
+                                <div *ngIf="submited && employeeForm.controls['birthday'].errors['required']"
+                                    style="text-align: start;">El campo
+                                    fecha  de nacimiento es obligatorio</div>
+                            </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 offset-md-3 d-grid my-4">
+                    <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

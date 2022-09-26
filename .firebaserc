@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "upax-test-auth": {
+      "hosting": {
+        "test_upax_test": [
+          "upax-test-auth"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "upax-test-auth"
+  }
+}
