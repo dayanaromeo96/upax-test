@@ -21,13 +21,17 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(){
+    if (!this.loginForm.invalid) {
     this.authSvc.login(this.loginForm.value)
     .then(response=>{
         this.router.navigate(['/employees']);
     })
     .catch(error=>{console.log(error);
-      window.alert("Ha ocurrido un error por favor inténtelo más tarde");})
+      window.alert("Ha ocurrido un error, por favor inténtelo más tarde");})
+  }else{
+    window.alert("Por favor, inserte correctamente email y password");
   }
+}
 
 
 }

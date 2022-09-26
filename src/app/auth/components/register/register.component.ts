@@ -23,9 +23,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
+    if (!this.formUser.invalid) {
     this.authSvc.register(this.formUser.value)
     .then(response=>{
-        console.log(response);
         window.alert("El usuario se ha registrado correctamente");
         this.router.navigate(['/login']);
     })
@@ -33,6 +33,9 @@ export class RegisterComponent implements OnInit {
       error=>{console.log(error);
       window.alert("Ha ocurrido un error, por favor inténtelo más tarde");
     })
+  }else{
+    window.alert("Por favor, inserte correctamente email y password");
+  }
   }
 
 }
